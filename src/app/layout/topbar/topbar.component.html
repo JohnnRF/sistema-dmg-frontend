@@ -1,0 +1,31 @@
+<div class="w-full bg-gray-800 flex items-center p-4">
+
+    <a class="flex items-center space-x-2 text-white" routerLink="">
+        <img src="/assets/images/dmglogo-withe.png" alt="logo" class="h-8">
+    </a>
+
+    <div class="flex ml-8 transition-transform duration-700"
+        [ngClass]="{'translate-x-48': sidebarVisible, 'translate-x-0': !sidebarVisible}">
+        <button (click)="toggleMenu()" class="text-white focus:outline-none">
+            <i class="pi pi-bars"></i>
+        </button>
+    </div>
+    
+
+    <div class="flex space-x-4 mt-0 mr-2 mb-0 ml-auto">
+        <button class="text-white flex flex-col items-center focus:outline-none">
+            <i class="pi pi-calendar"></i>
+            <span class="text-xs">Calendar</span>
+        </button>
+
+        <button class="text-white flex flex-col items-center focus:outline-none">
+            <i class="pi pi-user"></i>
+            <span class="text-xs">Profile</span>
+        </button>
+
+        <button class="text-white flex flex-col items-center focus:outline-none" [routerLink]="'/documentation'">
+            <i class="pi pi-cog"></i>
+            <span class="text-xs">Settings</span>
+        </button>
+    </div>
+</div>

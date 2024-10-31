@@ -1,0 +1,15 @@
+<div class="flex flex-col h-screen">
+    <app-topbar></app-topbar>
+    
+    <!-- Contenedor para el sidebar y el contenido -->
+    <div class="flex flex-1 transition-all duration-500" [ngClass]="{'ml-64': sidebarVisible, 'ml-0': !sidebarVisible}">
+        <app-sidebar></app-sidebar>
+        
+        <!-- Contenido principal -->
+        <div class="flex-1 p-4 overflow-auto">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+

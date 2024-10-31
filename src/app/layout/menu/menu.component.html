@@ -1,0 +1,33 @@
+
+
+<div [ngClass]="{'translate-x-0': isVisible, '-translate-x-full': !isVisible}" class="fixed left-0 top-16 h-full w-64 bg-gray-800 text-white transform transition-transform duration-500">
+
+   <ng-container *ngFor="let item of model; let i = index;">
+      <!-- Menú principal -->
+      <ul>
+         <li *ngIf="!item.separator" (click)="toggleSubmenu(i)">
+         <a [routerLink]="item.routerLink" class="flex items-center space-x-2 p-4 text-gray-200 hover:bg-gray-800 cursor-default">
+            <i [class]="item.icon"></i>
+            <span class="text-sm">{{ item.label }}</span>
+            <!-- Icono para desplegar/cerrar el submenú -->
+            <i *ngIf="item.items" class="pi" [ngClass]="{'pi-chevron-down': expandedMenus.includes(i), 'pi-chevron-right': !expandedMenus.includes(i)}"></i>
+         </a>
+   
+         <!-- Submenú -->
+         <ul *ngIf="item.items && expandedMenus.includes(i)" class="pl-6">
+            <li *ngFor="let subItem of item.items" class="py-2">
+               <a [routerLink]="subItem.routerLink" class="flex items-center space-x-2 p-2 text-gray-200 hover:bg-gray-700">
+               <i [class]="subItem.icon"></i>
+               <span class="text-sm">{{ subItem.label }}</span>
+               </a>
+            </li>
+         </ul>
+         </li>
+   
+         <!-- Separador -->
+         <li *ngIf="item.separator" class="border-t border-gray-700 my-2"></li>
+    </ul>
+    </ng-container>
+</div>
+
+ 
