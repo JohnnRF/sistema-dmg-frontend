@@ -8,7 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { LoginComponent } from './login/login.component';
 
 import { CheckboxModule } from 'primeng/checkbox';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 
@@ -25,7 +25,8 @@ import { InputTextModule } from 'primeng/inputtext';
     CheckboxModule,
     InputTextModule,
     FormsModule,
-    PasswordModule
+    PasswordModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }

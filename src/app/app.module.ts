@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { ButtonModule } from 'primeng/button';
 import { LayoutModule } from './layout/layout.module';
+import { AuthService } from './auth/service/auth.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { LayoutModule } from './layout/layout.module';
     AppRoutingModule,
     LayoutModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

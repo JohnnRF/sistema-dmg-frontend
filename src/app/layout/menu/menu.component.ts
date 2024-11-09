@@ -31,7 +31,7 @@ export class MenuComponent implements OnInit{
           {
             label: 'Dashboard',
             icon: 'pi pi-th-large',
-            routerLink:['/dashboard']
+            routerLink:['/']
           },
 
         ]

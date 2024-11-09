@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../service/auth.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +17,40 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  private fb = inject(FormBuilder);
+
+  public myForm: FormGroup = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]]
+  })
+
   valCheck: string[] = ['remember'];
 
   password!: string;
+
+  credentials = {
+    email : "admin@gmail.com",
+    password: "admin123"
+  }
+
+  constructor(private authService: AuthService, private router: Router){}
+
+  doLogin(){
+    
+    const {email, password} = this.myForm.getRawValue();
+    
+    this.authService.login(email, password).subscribe(
+      {
+        next: ()=>{
+          this.router.navigate(['/dashboard']);
+        },
+        error: ()=>{
+           console.log('falló el login');
+        }
+      }
+    )
+      
+  }
 
 
 }
