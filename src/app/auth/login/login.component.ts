@@ -42,7 +42,7 @@ export class LoginComponent {
     this.authService.login(email, password).subscribe(
       {
         next: ()=>{
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/']);
         },
         error: ()=>{
            console.log('falló el login');
