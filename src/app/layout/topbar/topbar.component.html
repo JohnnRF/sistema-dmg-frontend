@@ -23,9 +23,9 @@
             <span class="text-xs">Profile</span>
         </button>
 
-        <button class="text-white flex flex-col items-center focus:outline-none" [routerLink]="'/documentation'">
+        <button class="text-white flex flex-col items-center focus:outline-none">
             <i class="pi pi-cog"></i>
-            <span class="text-xs">Settings</span>
+            <button class="text-xs" (click)="logout()">Logout</button>
         </button>
     </div>
 </div>

@@ -16,6 +16,7 @@ export class AuthService {
 
   login(email: string, password: string){
     return this.http.post<LoginResponse>(`${this.baseUrl}/auth/login`, {email, password})
+    //operación antes de devolver el flujo normal
     .pipe(
       tap(response =>{
         this.tokenService.saveToken(response.access_token);
@@ -25,5 +26,9 @@ export class AuthService {
 
   getUsers(){
     return this.http.get<any>(`${this.baseUrl}/users`);
+  }
+
+  logout(){
+    this.tokenService.removeToken();
   }
 }

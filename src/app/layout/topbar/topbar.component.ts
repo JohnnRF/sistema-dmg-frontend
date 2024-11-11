@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from '../service/app.layout.service';
+import { AuthService } from '../../auth/service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
@@ -11,7 +13,7 @@ export class TopbarComponent implements OnInit{
 
   sidebarVisible: boolean = false;
 
-  constructor(private layoutService: LayoutService){}
+  constructor(private layoutService: LayoutService, private authService: AuthService, private router: Router){}
 
   ngOnInit(): void {
     // Suscribirse a los cambios de visibilidad del sidebar
@@ -22,6 +24,11 @@ export class TopbarComponent implements OnInit{
 
   toggleMenu() {
     this.layoutService.toggleSidebar(); // llama al método para alterar el estado del sidebar
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/auth/login']);
   }
 
 }
